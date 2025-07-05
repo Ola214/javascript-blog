@@ -122,3 +122,11 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+.post:has(.post-tags .list li a.active) {
+  display: block;
+}
+
+.post:not(.active) {
+  display: none;
+}
