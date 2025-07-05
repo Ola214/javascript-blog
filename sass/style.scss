@@ -130,3 +130,8 @@ body {
 .post:not(.active) {
   display: none;
 }
+
+
+.post:has(.post-author a.active) {
+  display: block;
+}
