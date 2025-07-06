@@ -78,6 +78,11 @@ function generateTitleLinks(customSelector = ''){
   titleList.innerHTML = '';
 
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
+
+  console.log('generateTitleLinks.articles', articles);
+  console.log('optArticleSelector + customSelector', optArticleSelector + customSelector);
+  console.log('optTitleListSelector', optTitleListSelector);
+
   let html = '';
   /* for each article */
   for (const article of articles) {
@@ -251,7 +256,7 @@ function authorClickHandler(event) {
   for(let authorHref of authorsHref) {
     authorHref.classList.add('active');
   }
-  generateTitleLinks('[data-author~="' + author + '"]');
+  generateTitleLinks('[data-author="' + author + '"]');
 }
 
 function addClickListenersToTags(){
