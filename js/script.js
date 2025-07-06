@@ -1,5 +1,38 @@
 'use strict';
 
+function clearAllActiveClass() {
+  /* remove class 'active' from all article links  */
+  const activeLinks = document.querySelectorAll('.titles a.active');
+
+  for(let activeLink of activeLinks) {
+    activeLink.classList.remove('active');
+  }
+
+  /* find all tag links with class active */
+  const tagLinks = document.querySelectorAll('.post .post-tags .list li a.active');
+
+  /* START LOOP: for each active tag link */
+  for(let tagLink of tagLinks) {
+    /* remove class active */
+    tagLink.classList.remove('active');
+  /* END LOOP: for each active tag link */
+  }
+
+  const authorLinks = document.querySelectorAll('.post .post-author a.active');
+
+  for(let authorLink of authorLinks) {
+    authorLink.classList.remove('active');
+  }
+
+  /* remove class 'active' from all articles */
+  const activeArticles = document.querySelectorAll('.posts article.active');
+
+  for(let activeArticle of activeArticles) {
+    activeArticle.classList.remove('active');
+  }
+
+}
+
 function titleClickHandler(event){
   event.preventDefault();
 
@@ -8,23 +41,14 @@ function titleClickHandler(event){
 
   const clickedElement = this;
 
-  /* remove class 'active' from all article links  */
-  const activeLinks = document.querySelectorAll('.titles a.active');
-
-  for(let activeLink of activeLinks) {
-    activeLink.classList.remove('active');
-  }
 
   /* add class 'active' to the clicked link */
   console.log('clickedElement:', clickedElement);
   clickedElement.classList.add('active');
 
-  /* remove class 'active' from all articles */
-  const activeArticles = document.querySelectorAll('.posts article.active');
 
-  for(let activeArticle of activeArticles) {
-    activeArticle.classList.remove('active');
-  }
+  clearAllActiveClass();
+
 
   /* get 'href' attribute from the clicked link */
   const articleSelector = clickedElement.getAttribute('href');
@@ -196,14 +220,7 @@ function tagClickHandler(event){
   const tag = href.replace('#tag-','');
 
   /* find all tag links with class active */
-  const tagLinks = document.querySelectorAll('.post .post-tags .list li a.active');
-
-  /* START LOOP: for each active tag link */
-  for(let tagLink of tagLinks) {
-    /* remove class active */
-    tagLink.classList.remove('active');
-  /* END LOOP: for each active tag link */
-  }
+  clearAllActiveClass();
 
   /* find all tag links with "href" attribute equal to the "href" constant */
   const tagsHref = document.querySelectorAll(`.post-tags .list li a[href="#tag-${tag}"]`);
@@ -227,11 +244,7 @@ function authorClickHandler(event) {
   const href = clickedElement.getAttribute('href');
   const author = href.replace('#author-','');
 
-  const authorLinks = document.querySelectorAll('.post .post-author a.active');
-
-  for(let authorLink of authorLinks) {
-    authorLink.classList.remove('active');
-  }
+  clearAllActiveClass();
 
   const authorsHref = document.querySelectorAll(`.post .post-author a[href="#author-${author}"]`);
 
