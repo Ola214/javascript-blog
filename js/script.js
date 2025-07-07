@@ -175,7 +175,7 @@ function generateTags(){
   /* START LOOP: for every article: */
   for(let article of articles) {
     /* find tags wrapper */
-    const tags = article.querySelector(opts.articleTagsSelector); //.post-tags .list
+    const tags = article.querySelector(select.article.tagList); //.post-tags .list
 
     /* make html variable with empty string */
     let html = '';
